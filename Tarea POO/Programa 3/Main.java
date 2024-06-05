@@ -27,13 +27,21 @@ class PuntoName extends Punto{
     }
 
     // Método visualiza que muestra las coordenadas del punto y su nombre
-    @Override
+    @Override// -> Método que está sobrescribiendo un método de la superclase
     public void visualiza(){
-        super.visualiza();  // Llamar al método visualiza de la clase padre
+        super.visualiza();  // Llamar al método visualiza() de la clase padre
         System.out.println("Nombre : " + name);
     }
 }
 
 public class Main {
-
+    public static void main(String[] args) {
+        int x = 5;
+        int y = 3;
+        String name = "Punto 1";
+        // Crear un objeto PuntoName
+        PuntoName puntoConNombre = new PuntoName(x,y,name);
+        // Mostrar las coordenadas y el nombre
+        puntoConNombre.visualiza();
+    }
 }
