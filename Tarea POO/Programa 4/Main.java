@@ -26,11 +26,6 @@ class Punto {
 }
 
 // Queremos crear una clase Circulo con los siguientes metodos:
-    
-    
-    // • cambiaRadio para modificar el radio del círculo,
-    // • getCentro que proporciona como resultado un objeto de tipo Punto correspondiente
-    // al centro del círculo,
     // • visualiza que muestra las coordenadas del centro del círculo y su radio.
     // 1. Define la clase Circulo como una clase derivada de Punto.
     // 2. Define la clase Circulo como si tuviera un miembro de tipo Punto.
@@ -51,8 +46,22 @@ class Circulo{
     public void mueveCentro(double dx, double dy){
         centro.desplaza(dx, dy);
     }
+// • cambiaRadio para modificar el radio del círculo,
+public void cambiaRadio(double radio){
+    this.radio = radio;
+}
+//  • getCentro que proporciona como resultado un objeto de tipo Punto correspondiente
+//  al centro del círculo
+public Punto getCentro(){
+    return centro;
+}
+// • visualiza que muestra las coordenadas del centro del círculo y su radio.
+public void visualiza(){
+    System.out.println("Coordenadas del centro del círculo : " + centro.getX() + " " + centro.getY());
+    System.out.println("Radio del círculo : " + radio);
+}
 
-    
+
 }
 
 
