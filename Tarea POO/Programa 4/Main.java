@@ -67,23 +67,30 @@ class Circulo2 {
     private Punto centro;
     private double radio;
 
+    // • constructor que recibe como argumentos las coordenadas del centro del
+    // círculo y su radio
     public Circulo2(double x, double y, double radio) {
         this.centro = new Punto(x, y);
         this.radio = radio;
     }
 
+    // • mueveCentro para modificar las coordenadas del centro del círculo,
     public void mueveCentro(double dx, double dy) {
         centro.desplaza(dx, dy);
     }
 
+     // • cambiaRadio para modificar el radio del círculo,
     public void cambiaRadio(double nuevoRadio) {
         this.radio = nuevoRadio;
     }
 
+    // • getCentro que proporciona como resultado un objeto de tipo Punto
+    // correspondiente al centro del círculo
     public Punto getCentro() {
         return centro;
     }
 
+    // • visualiza que muestra las coordenadas del centro del círculo y su radio.
     public void visualiza() {
         System.out.println("Coordenadas del centro del círculo: " + centro.getX() + " " + centro.getY() + " y su radio: " + radio);
     }
