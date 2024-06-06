@@ -22,7 +22,7 @@ public class Util {
             return ackermann(m - 1, ackermann(m, n - 1));
         } else {
             // Esta condición no se debería alcanzar con las restricciones m >= 0 y n >= 0
-            // se utiliza para lanzar una excepción de tipo IllegalArgumentException, que indica que se ha producido un argumento ilegal o inapropiado en el programa.
+            // se utiliza para lanzar una excepción de tipo IllegalArgumentException, que indica que se ha producido un valor inapropiado en el programa.
             throw new IllegalArgumentException("Los argumentos m y n deben ser mayores o iguales a 0");
         }
     }
