@@ -51,7 +51,7 @@ class Circulo1 extends Punto{
     // • getCentro que proporciona como resultado un objeto de tipo Punto
     // correspondiente al centro del círculo
     public Punto getCentro() {
-        return this;
+        return this;// "this" se refiere al centro del círculo, ya que la clase Circulo se ha definido como una extensión de Punto. un objeto Circulo es en sí mismo un Punto que representa el centro del círculo.
     }
 
     // • visualiza que muestra las coordenadas del centro del círculo y su radio.
@@ -106,7 +106,7 @@ public class Main {
         c1.visualiza();
 
         System.out.println("-------------------");
-        
+
         Circulo1 c2 = new Circulo1(2.0, 3.0, 4.0);
         c2.visualiza();
         c2.mueveCentro(2.0, 3.0);
@@ -114,3 +114,24 @@ public class Main {
         c2.visualiza();
     }
 }
+
+
+
+
+// Herencia (Circulo como una clase derivada de Punto):
+// Ventajas:
+// Código más corto: No necesito escribir métodos para acceder o modificar las coordenadas del círculo, ya que puedo usar los métodos de la clase Punto.
+// Desventajas:
+// Acoplamiento: La clase Circulo está fuertemente acoplada a la clase Punto. Si cambio la implementación de Punto, también podría tener que cambiar la implementación de Circulo.
+
+
+// Composición (Circulo con un miembro de tipo Punto):
+// Ventajas:
+// Flexibilidad: La composición es más flexible que la herencia porque puedes cambiar el comportamiento de tu objeto .
+// Menor acoplamiento: La clase Circulo no está tan fuertemente acoplada a la clase Punto. Si cambiao la implementación de Punto, es menos probable que tenga que cambiar la implementación de Circulo.
+// Desventajas:
+// Más código: Necesito escribir métodos para acceder o modificar las coordenadas del círculo.
+
+
+// En general, la composición se considera una opción más flexible y robusta. La regla general es "preferir la composición sobre la herencia" 
+// a menos que haya una razón específica para usar la herencia.
