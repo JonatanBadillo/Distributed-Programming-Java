@@ -7,7 +7,7 @@ class O1 {
         this.vinculoO2 = vinculoO2;
     }
 
-    public void trabajoParaO1() {
+    public void trabajoParaO1() {// Funcion del objeto de la clase O2
         vinculoO2.trabajoParaO2(); // Aquí está el envío del mensaje
     }
 
