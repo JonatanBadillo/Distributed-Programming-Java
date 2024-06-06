@@ -6,7 +6,7 @@ class Punto {
     }
 
     public void visualiza() {
-        System.out.println("Coordenadas : " + x + " " + y);
+        System.out.println("Coordenadas : " + x + "," + y);
     }
 
     private int x, y;
@@ -19,9 +19,9 @@ class Punto {
 
 
 class PuntoName extends Punto{
-    private String name;
+    private char name;
     // Constructor para definir las coordenadas y el nombre 
-    public PuntoName(int x, int y, String name){
+    public PuntoName(int x, int y, char name){
         super(x, y);// Llamada al constructor de la clase padre
         this.name = name;
     }
@@ -38,7 +38,7 @@ public class Main {
     public static void main(String[] args) {
         int x = 5;
         int y = 3;
-        String name = "Punto 1";
+        char name = 'A';
         // Crear un objeto PuntoName
         PuntoName puntoConNombre = new PuntoName(x,y,name);
         // Mostrar las coordenadas y el nombre
