@@ -57,7 +57,7 @@ class Circulo1 extends Punto{
     // • visualiza que muestra las coordenadas del centro del círculo y su radio.
     public void visualiza() {
         super.visualiza();
-        System.out.println(" y su radio: " + radio);
+        System.out.println("Radio: " + radio);
     }
 }
 
@@ -99,6 +99,18 @@ class Circulo2 {
 
 public class Main {
     public static void main(String[] args) {
+        Circulo1 c1 = new Circulo1(1.0, 2.0, 3.0);
+        c1.visualiza();
+        c1.mueveCentro(2.0, 3.0);
+        c1.cambiaRadio(4.0);
+        c1.visualiza();
 
+        System.out.println("-------------------");
+        
+        Circulo1 c2 = new Circulo1(2.0, 3.0, 4.0);
+        c2.visualiza();
+        c2.mueveCentro(2.0, 3.0);
+        c2.cambiaRadio(5.0);
+        c2.visualiza();
     }
 }
