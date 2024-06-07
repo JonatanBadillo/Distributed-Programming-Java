@@ -1,37 +1,38 @@
+import java.io.Serializable;
 
-public abstract class Player {
+public abstract class Player implements Serializable{
     private String firstName;
     private String lastName;
     private String position;
     private int status = -1;
-    
-    public Player(){
-        
+
+    public Player() {
+
     }
-    
-    public Player(String position, int status){
+
+    public Player(String position, int status) {
         this.position = position;
         this.status = status;
     }
-    
-    protected String playerStatus(){
+
+    protected String playerStatus() {
         String returnValue = null;
-        
-        switch(getStatus()){
-                case 0:
-                        returnValue = "ACTIVE";
-                case 1:
-                        returnValue = "INACTIVE";
-                case 2:
-                        returnValue = "INJURY";
-                default:
-                        returnValue = "ON_BENCH";
+
+        switch (getStatus()) {
+            case 0:
+                returnValue = "ACTIVE";
+            case 1:
+                returnValue = "INACTIVE";
+            case 2:
+                returnValue = "INJURY";
+            default:
+                returnValue = "ON_BENCH";
         }
-        
+
         return returnValue;
     }
-    
-    public String playerString(){
+
+    public String playerString() {
         return getFirstName() + " " + getLastName() + " - " + getPosition();
     }
 
@@ -46,7 +47,7 @@ public abstract class Player {
      * @param firstName the firstName to set
      */
     public void setFirstName(String firstName) {
-        if (firstName.length() > 30){
+        if (firstName.length() > 30) {
             this.firstName = firstName.substring(0, 29);
         } else {
             this.firstName = firstName;
@@ -95,57 +96,7 @@ public abstract class Player {
         this.status = status;
     }
 
+    
 
-    // Java Bean es un estandar que hace referencia a la definición de clases de negocio con unos requisitos concretos .
-
-    public class  Team {
-        private String name;
-        private String city;
-        private String stadium;
-        private String coach;
-
-
-        // Debe tener un constructor publico sin parámetros y que sea publico.
-        public Team(){
-            
-        }
-
-        // Propiedades privadas con métodos getters y Setters .
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getCity() {
-            return city;
-        }
-
-        public void setCity(String city) {
-            this.city = city;
-        }
-
-        public String getStadium() {
-            return stadium;
-        }
-
-        public void setStadium(String stadium) {
-            this.stadium = stadium;
-        }
-
-        public String getCoach() {
-            return coach;
-        }
-
-        public void setCoach(String coach) {
-            this.coach = coach;
-        }
-
-    }
-
-    public static void main(String[] args) {
-        
-    }
+    
 }
