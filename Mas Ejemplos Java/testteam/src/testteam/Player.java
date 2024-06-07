@@ -21,12 +21,16 @@ public abstract class Player {
         switch(getStatus()){
                 case 0:
                         returnValue = "ACTIVE";
+                        break;
                 case 1:
                         returnValue = "INACTIVE";
+                        break;
                 case 2:
                         returnValue = "INJURY";
+                        break;
                 default:
                         returnValue = "ON_BENCH";
+                        break;
         }
         
         return returnValue;
