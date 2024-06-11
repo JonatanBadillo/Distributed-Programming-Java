@@ -16,14 +16,13 @@ interface FuncInterface
 public class Lambda1 {
 
     public static void main(String[] args) {
-        // lambda expression to implement above
-        // functional interface. This interface
-        // by default implements abstractFun()
+        // expresión lambda para implementar la interfaz funcional anterior.
+        // Esta interfaz por defecto implementa abstractFun()
         FuncInterface fobj = (int x)->System.out.println(2*x);
 
 
 
-        // This calls above lambda expression and prints 10.
+        // Esto llama a la expresión lambda anterior y imprime 10.
         fobj.abstractFun(5);
 
     }
