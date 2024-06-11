@@ -11,7 +11,7 @@ public class Concurrente1 {
     private void startProcess() {
         // Crea un nuevo hilo (Thread) con un objeto Runnable que define el método run()
         // para ejecutar en ese hilo. El hilo se llama "Background Thread".
-        Thread backgroundThread = new Thread(new Runnable() {
+        Thread backgroundThread = new Thread(new Runnable() { // El constructor Thread requiere como parámetro una clase que implemente la interfaz Runnable.
             public void run() {
                 doSomethingInBackground();
             }
