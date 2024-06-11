@@ -17,6 +17,9 @@ public class Lambda1 {
 
     public static void main(String[] args) {
         // expresión lambda para implementar la interfaz funcional anterior.
+
+        // Se crea una instancia de FuncInterface .
+
         // Esta interfaz por defecto implementa abstractFun()
         FuncInterface fobj = (int x)->System.out.println(2*x);
 
