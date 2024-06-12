@@ -25,14 +25,17 @@ public class InfernalRace2 {
 
 class Runner extends Thread {
     String name;
+    // El constructor Runner asigna un nombre al hilo.
     public Runner(String name) {
         super(name);
         this.name = name;
     }
+    // El método run contiene un bucle que incrementa la variable PedalStroke hasta llegar a 5 millones.
     public void run() {
         long PedalStroke = 0;
         while (PedalStroke < 5000000) {
             PedalStroke++;
+            // Cada 500,000 iteraciones, imprime el número de pedaladas realizadas por el corredor.
             if ((PedalStroke % 500000) == 0) {
                 System.out.println("Runner " + name + " performs " +
                         PedalStroke + " pedal strokes.");
