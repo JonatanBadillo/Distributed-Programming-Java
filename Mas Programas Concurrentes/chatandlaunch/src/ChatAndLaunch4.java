@@ -31,6 +31,7 @@ class Parrot4 extends Thread {
     // nuestra funcion repeter, imprime el mensaje que recibimos como parametro
     // en nuestro constructor
     public void repeter() { System.out.println(cri); }
+    // al ejecutar nuestro hilo invocara fois veces a nuestra funcion repeter
     public void run() {
         for (int n=0; n<fois; n++) repeter();
     }
