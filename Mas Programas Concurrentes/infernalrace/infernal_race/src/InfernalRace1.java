@@ -1,0 +1,2 @@
+public class InfernalRace1 {
+}
