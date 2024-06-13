@@ -3,7 +3,7 @@ public class RowMultiplierTask implements Runnable {
     private final double[][] matrix1;
     private final double[][] matrix2;
     private final int row;
-    
+
 
     public RowMultiplierTask(double[][] result, double[][] matrix1, double[][] matrix2, int i) {
         this.result = result;
