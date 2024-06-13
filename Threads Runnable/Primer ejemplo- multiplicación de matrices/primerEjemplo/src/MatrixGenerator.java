@@ -3,6 +3,8 @@
 // generate() que recibe el número de filas y columnas que deseas en tu matriz como parámetros
 // y genera una matriz con esas dimensiones con números aleatorios double. Este es el código
 // fuente de la clase:
+import java.util.Random;
+
 public class MatrixGenerator {
     public static double[][] generate (int rows, int columns) {
         double[][] ret=new double[rows][columns];
