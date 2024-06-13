@@ -8,9 +8,11 @@ package escritorsync;
 
 public class EscritorSync {
     public static void main(String[] args) {
+        // Crea dos instancias de la clase Escritor, escritorA y escritorB, con los textos ABC y XYZ respectivamente.
         Escritor escritorA, escritorB;
         escritorA = new Escritor("ABC");
         escritorB = new Escritor("XYZ");
+        // inicia la ejecución de los hilos correspondientes.
         escritorA.start();
         escritorB.start();
     }
