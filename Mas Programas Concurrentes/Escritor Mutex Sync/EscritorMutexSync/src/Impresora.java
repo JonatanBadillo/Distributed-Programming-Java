@@ -6,6 +6,7 @@ public class Impresora{
     public Impresora(){texto="";}
 
     // La palabra synchronized asegura que solo un hilo puede ejecutar este método en una instancia de Impresora a la vez
+    // Esto previene la interferencia de hilos, asegurando que los caracteres de ABC y XYZ no se mezclen al imprimir.
     public synchronized void imprimir(String t){
         texto=t;
         // lo imprime carácter por carácter.
