@@ -1,5 +1,7 @@
 /*
- Demostración de los fundamentos de los hilos 
+ Demostración de los fundamentos de los hilos
+ El programa demuestra cómo crear hilos, cómo configurarlos como daemon o no daemon,
+ y cómo imprimir su estado en tiempo real.
 */
 package threaddemo;
 
