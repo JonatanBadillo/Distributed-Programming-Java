@@ -5,12 +5,17 @@ package threadstoppping;
 
 public class ThreadStoppping {
     public static void main(String[] args) {
+        // esta clase extiende de Hilo
         class StoppableThread extends Thread
         {
             private boolean stopped; // defaults to false
 
             @Override
             public void run()
+            // El método run() usa synchronized(this) para asegurarse de que el acceso a stopped esté sincronizado.
+            // Esto es innecesario , ya que la sincronización también impone exclusión mutua, lo cual no es necesario en este caso.
+            // Bloqueo del Hilo:
+            // El método run() adquiere el bloqueo del objeto StoppableThread al usar synchronized(this).
             {
                 synchronized(this)
                 {
@@ -18,12 +23,19 @@ public class ThreadStoppping {
                         System.out.println("running");
                 }
             }
+
+            // El método stopThread() también requiere este bloqueo.
+            // Si run() está ejecutando el bucle while, nunca liberará el bloqueo, causando que stopThread() se bloquee al intentar adquirir el mismo bloqueo.
             synchronized void stopThread()
             {
                 stopped = true;
             }
         }
+
+
+        // creon nuevo hilo thd
         StoppableThread thd = new StoppableThread();
+        // se lanza thd
         thd.start();
         try
         {
@@ -39,7 +51,8 @@ public class ThreadStoppping {
 /*
  El programa es una mala idea por dos razones. Primero, aunque solo necesitas 
  resolver el problema de visibilidad, la sincronización también resuelve el 
- problema de exclusión mutua (que no es un problema en esta aplicación). Más 
+ problema de exclusión mutua (que no es un problema en esta aplicación).
+  Más
  importante aún, has introducido un problema grave en la aplicación.
  Has sincronizado correctamente el acceso a stopped, pero observa más de cerca 
  el bloque sincronizado en el método run(). Observa el ciclo while. Este ciclo 
