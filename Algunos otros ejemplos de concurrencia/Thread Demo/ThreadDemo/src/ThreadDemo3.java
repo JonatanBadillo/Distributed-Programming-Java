@@ -11,7 +11,7 @@ public class ThreadDemo3 {
     // rounding mode to use during pi computation
     // roundingMode: El modo de redondeo que se usará (BigDecimal.ROUND_HALF_EVEN).
     private static final int roundingMode = BigDecimal.ROUND_HALF_EVEN;
-    //result: Una variable estática que almacenará el resultado del cálculo de π
+    // Una variable estática que almacenará el resultado del cálculo de π
     private static BigDecimal result;
 
 
