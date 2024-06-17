@@ -124,3 +124,18 @@ final class Pool
         return false;
     }
 }
+
+
+//Se crean y ejecutan MAX_AVAILABLE + 1 hilos.
+
+//Cada hilo intenta adquirir y liberar recursos en un bucle infinito.
+
+//Cada hilo imprime un mensaje cuando adquiere y libera un recurso.
+
+//Los hilos duermen por un tiempo aleatorio .
+
+//Comportamiento del Semáforo
+//El semáforo available garantiza que solo MAX_AVAILABLE (10) hilos puedan adquirir un recurso simultáneamente.
+// Si más de 10 hilos intentan adquirir un recurso, los hilos adicionales se bloquearán en available.acquire()
+// hasta que un espacio sea liberado y available.release() sea llamado.
+// Esto garantiza un acceso controlados a los recursos compartidos,
