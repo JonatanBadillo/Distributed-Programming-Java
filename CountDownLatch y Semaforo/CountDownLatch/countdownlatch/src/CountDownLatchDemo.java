@@ -94,3 +94,41 @@ public class CountDownLatchDemo {
     }
 
 }
+
+
+//El hilo principal inicia y se imprimen los mensajes:
+//hilo principal haciendo algo
+
+//Aquí, el hilo principal está ejecutando alguna tarea simulada con Thread.sleep(1000);
+// que hace que el hilo principal duerma por 1 segundo.
+
+//Durante este tiempo de espera del hilo principal,
+// Cada uno de estos hilos imprime el mensaje indicando que ha ingresado a run():
+//1718639920979: Thread[#22,pool-1-thread-3,5,main]: ingreso a run()
+//1718639920976: Thread[#20,pool-1-thread-1,5,main]: ingreso a run()
+//1718639920976: Thread[#21,pool-1-thread-2,5,main]: ingreso a run()
+//Aquí, los tiempos son muy cercanos porque los hilos se ejecutan casi simultáneamente.
+
+
+// Los hilos entran en el estado de espera (startSignal.await();), esperando que el hilo principal los libere.
+//Después de que el hilo principal completa su espera de 1 segundo, imprime:
+//hilo principal haciendo otra cosa
+
+
+// llama a startSignal.countDown();, lo que permite que todos los hilos secundarios salgan del estado de espera
+// y comiencen su trabajo simultáneamente.
+
+//Una vez liberados, todos los hilos secundarios imprimen el mensaje de que están trabajando:
+//1718639922000: Thread[#22,pool-1-thread-3,5,main]: trabajando
+//1718639922000: Thread[#20,pool-1-thread-1,5,main]: trabajando
+//1718639922000: Thread[#21,pool-1-thread-2,5,main]: trabajando
+
+
+//Cada hilo secundario realiza una tarea simulada con Thread.sleep lo que introduce una espera aleatoria de hasta 1 segundo.
+//Luego, cada hilo llama a doneSignal.countDown(); para indicar que ha terminado su trabajo.
+
+
+//El hilo principal, que está esperando en doneSignal.await();, se desbloqueará cuando todos los hilos secundarios hayan llamado a doneSignal.countDown().
+
+//Una vez que todos los hilos secundarios han completado su trabajo y el hilo principal ha sido notificado (desbloqueado por doneSignal.await();),
+// el hilo principal cierra el pool de hilos con executor.shutdownNow();.
