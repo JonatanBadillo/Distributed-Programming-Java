@@ -56,16 +56,29 @@ public class CountDownLatchDemo {
         };// fin runnable
 
 
-        
+        // Crea un pool de hilos con un tamaño fijo de NTHREADS (3 en este caso).
         ExecutorService executor = Executors.newFixedThreadPool(NTHREADS);
+        // En cada iteración, el ExecutorService (executor) ejecuta la tarea definida en el Runnable (r).
+        // Esto significa que se lanzan 3 hilos en paralelo, cada uno ejecutando el método run del Runnable.
         for (int i = 0; i < NTHREADS; i++)
             executor.execute(r);
         try
         {
+            // El hilo principal imprime un mensaje indicando que está haciendo algo.
             System.out.println("hilo principal haciendo algo");
             Thread.sleep(1000); // duerme por 1 segundo
+
+            //  Decrementa el contador de startSignal a cero.
+            //  Esto hace que los 3 hilos que están esperando en startSignal.await() puedan continuar su ejecución.
             startSignal.countDown(); // deja que los hilos continuen
+
+            // El hilo principal imprime otro mensaje indicando que está haciendo otra cosa.
             System.out.println("hilo principal haciendo otra cosa");
+
+            // El hilo principal llama a await() en doneSignal. Esto hace que el hilo principal se bloquee y espere hasta que
+            // todos los hilos hayan terminado su trabajo. Cada uno de los 3 hilos llamará a doneSignal.countDown()
+            // cuando terminen su trabajo, reduciendo el contador. Cuando el contador llegue a cero,
+            // el hilo principal continuará su ejecución.
             doneSignal.await(); // espera a que terminen todos los hilos
             executor.shutdownNow();
         }
