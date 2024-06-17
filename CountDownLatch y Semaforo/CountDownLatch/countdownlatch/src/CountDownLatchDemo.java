@@ -5,12 +5,17 @@ import java.util.concurrent.Executors;
 
 public class CountDownLatchDemo {
 
-    
+    // Define el número de hilos que se crearán, en este caso, 3.
     final static int NTHREADS = 3;
 
     public static void main(String[] args) {
+        // Un CountDownLatch inicializado con 1, que actuará como señal para que los hilos comiencen a trabajar.
         final CountDownLatch startSignal = new CountDownLatch(1);
+        // Un CountDownLatch inicializado con el número de hilos, que permite al hilo principal esperar
+        // hasta que todos los hilos completen su trabajo.
         final CountDownLatch doneSignal = new CountDownLatch(NTHREADS);
+
+        // método run que cada hilo ejecutará.
         Runnable r = new Runnable()
         {
             @Override
@@ -18,10 +23,19 @@ public class CountDownLatchDemo {
             {
                 try
                 {
+                    // Imprime mensajes para indicar el estado del hilo.
                     report("ingreso a run()");
+
+                    // Hace que el hilo espere hasta que startSignal se reduzca a cero.
                     startSignal.await();  // espera hasta que te digan ...
+
+                    // Imprime mensajes para indicar el estado del hilo.
                     report("trabajando"); // ... procede
+
+                    // hilo durmiendo por un tiempo aleatorio.
                     Thread.sleep((int) (Math.random() * 1000));
+
+                    // Decrementa el contador de doneSignal para indicar que el hilo ha terminado su trabajo.
                     doneSignal.countDown(); // reduce el recuento de
                     // que el hilo principal ...
                 }                          // esta esperando
@@ -31,13 +45,18 @@ public class CountDownLatchDemo {
                 }
             }
 
+
+            // imprime el nombre del current hilo + su estado
             void report(String s)
             {
                 System.out.println(System.currentTimeMillis() +
                         ": " + Thread.currentThread() +
                         ": " + s);
             }
-        };
+        };// fin runnable
+
+
+        
         ExecutorService executor = Executors.newFixedThreadPool(NTHREADS);
         for (int i = 0; i < NTHREADS; i++)
             executor.execute(r);
