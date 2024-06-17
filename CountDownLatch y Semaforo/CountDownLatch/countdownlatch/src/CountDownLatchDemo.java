@@ -75,8 +75,9 @@ public class CountDownLatchDemo {
             // El hilo principal imprime otro mensaje indicando que está haciendo otra cosa.
             System.out.println("hilo principal haciendo otra cosa");
 
-            // El hilo principal llama a await() en doneSignal. Esto hace que el hilo principal se bloquee y espere hasta que
-            // todos los hilos hayan terminado su trabajo. Cada uno de los 3 hilos llamará a doneSignal.countDown()
+            // Esto hace que el hilo principal se bloquee y espere hasta que
+            // todos los hilos hayan terminado su trabajo.
+            // Cada uno de los 3 hilos llamará a doneSignal.countDown()
             // cuando terminen su trabajo, reduciendo el contador. Cuando el contador llegue a cero,
             // el hilo principal continuará su ejecución.
             doneSignal.await(); // espera a que terminen todos los hilos
