@@ -80,6 +80,10 @@ public class CountDownLatchDemo {
             // cuando terminen su trabajo, reduciendo el contador. Cuando el contador llegue a cero,
             // el hilo principal continuará su ejecución.
             doneSignal.await(); // espera a que terminen todos los hilos
+
+            // Apaga el ExecutorService, lo que interrumpe cualquier hilo que esté ejecutándose y no ha terminado aún.
+            // Esto es una forma de asegurarse de que todos los hilos se detengan y se liberen los recursos asociados al
+            // ExecutorService.
             executor.shutdownNow();
         }
         catch (InterruptedException ie)
