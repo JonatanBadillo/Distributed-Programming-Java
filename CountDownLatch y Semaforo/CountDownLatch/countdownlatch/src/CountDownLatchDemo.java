@@ -99,8 +99,7 @@ public class CountDownLatchDemo {
 //El hilo principal inicia y se imprimen los mensajes:
 //hilo principal haciendo algo
 
-//Aquí, el hilo principal está ejecutando alguna tarea simulada con Thread.sleep(1000);
-// que hace que el hilo principal duerma por 1 segundo.
+// el hilo principal duerma por 1 segundo.
 
 //Durante este tiempo de espera del hilo principal,
 // Cada uno de estos hilos imprime el mensaje indicando que ha ingresado a run():
