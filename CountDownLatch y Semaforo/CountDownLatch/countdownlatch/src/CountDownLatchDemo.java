@@ -96,7 +96,7 @@ public class CountDownLatchDemo {
 }
 
 
-//El hilo principal inicia y se imprimen los mensajes:
+//El hilo principal inicia y se imprime los mensajes:
 //hilo principal haciendo algo
 
 // el hilo principal duerma por 1 segundo.
