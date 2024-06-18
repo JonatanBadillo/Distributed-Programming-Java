@@ -5,13 +5,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import com.bancho.simpleserver.common.Command;
-import com.bancho.simpleserver.common.Constants;
-import com.bancho.simpleserver.common.ErrorCommand;
-import com.bancho.simpleserver.common.QueryCommand;
-import com.bancho.simpleserver.common.ReportCommand;
-import com.bancho.simpleserver.common.StopCommand;
-import com.bancho.simpleserver.wdi.data.WDIDAO;
+
 
 /**
  * Class that implements the serial server.
