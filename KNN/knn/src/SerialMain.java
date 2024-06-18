@@ -13,7 +13,7 @@ public class SerialMain {
 		double currentTime = 0d;
 		int success = 0, mistakes = 0;
 		
-		int k = 10;
+		int k = 30;
 		if (args.length==1) {
 			k = Integer.parseInt(args[0]);
 		}

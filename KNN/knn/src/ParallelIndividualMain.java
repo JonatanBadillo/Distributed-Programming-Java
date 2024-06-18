@@ -13,7 +13,7 @@ public class ParallelIndividualMain {
 		double currentTime = 0.0d;
 		int success = 0, mistakes = 0;
 		
-		int k = 10;
+		int k = 50;
 		if (args.length==1) {
 			k = Integer.parseInt(args[0]);
 		}
