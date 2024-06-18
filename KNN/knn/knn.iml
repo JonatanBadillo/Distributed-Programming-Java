@@ -3,12 +3,7 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" packagePrefix="com.javferna.packtpub.mastering.knn" />
-      <sourceFolder url="file://$MODULE_DIR$/data" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/distances" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/loader" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/main" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/serial" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/knn.iml" filepath="$PROJECT_DIR$/knn.iml" />
-      <module fileurl="file://$PROJECT_DIR$/parallel/parallel.iml" filepath="$PROJECT_DIR$/parallel/parallel.iml" />
     </modules>
   </component>
 </project>
