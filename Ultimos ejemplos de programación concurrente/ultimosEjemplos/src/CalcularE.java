@@ -10,16 +10,22 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class CalcularE {
+    // Define la última iteración de la serie (en este caso, 17).
     final static int LASTITER = 17;
 
     public static void main(String[] args) {
+        // Crea un pool de un solo hilo
         ExecutorService executor = Executors.newFixedThreadPool(1);
+        // El Callable es una tarea que devuelve un resultado (BigDecimal en este caso).
         Callable<BigDecimal> callable;
         callable = new Callable<BigDecimal>()
         {
             @Override
             public BigDecimal call()
             {
+                // Dentro del método call, se crea un MathContext con una precisión de 100 dígitos y
+                // modo de redondeo HALF_UP. Luego, se calcula el valor de
+                // e sumando los términos de la serie hasta LASTITER.
                 MathContext mc =
                         new MathContext(100, RoundingMode.HALF_UP);
                 BigDecimal result = BigDecimal.ZERO;
@@ -34,6 +40,7 @@ public class CalcularE {
                 return result;
             }
 
+            // Calcula el factorial de un número BigDecimal
             public BigDecimal factorial(BigDecimal n)
             {
                 if (n.equals(BigDecimal.ZERO))
@@ -43,7 +50,11 @@ public class CalcularE {
                             subtract(BigDecimal.ONE)));
             }
         };
+
+        // Se envía el Callable al ExecutorService y se obtiene un Future para esperar el resultado.
         Future<BigDecimal> taskFuture = executor.submit(callable);
+
+        // Se espera hasta que la tarea se complete, imprimiendo "esperando" mientras tanto.
         try
         {
             while (!taskFuture.isDone())
@@ -59,6 +70,7 @@ public class CalcularE {
         {
             System.err.println("interrumpido mientras esperaba");
         }
+        // se apaga el ejecutor
         executor.shutdownNow();
     }
 }
