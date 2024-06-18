@@ -6,9 +6,9 @@ public class SerialMain {
 	public static void main(String[] args) {
 
 		BankMarketingLoader loader = new BankMarketingLoader();
-		List<BankMarketing> train = loader.load("data\\bank.data");
+		List<BankMarketing> train = loader.load("src/bank.data");
 		System.out.println("Train: " + train.size());
-		List<BankMarketing> test = loader.load("data\\bank.test");
+		List<BankMarketing> test = loader.load("src/bank.data");
 		System.out.println("Test: " + test.size());
 		double currentTime = 0d;
 		int success = 0, mistakes = 0;
