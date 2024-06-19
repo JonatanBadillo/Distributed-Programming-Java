@@ -1,110 +1,88 @@
-public class Dine2{
-    public static void main(String[] args){
+import java.util.concurrent.Semaphore;
 
-        int rounds=10;
+public class Dine2 {
+    public static void main(String[] args) {
+        int rounds = 10;
 
         Log.msg(String.valueOf(rounds));
 
-        Chopstick[] chopistics = new Chopstick[5];
+        Semaphore[] chopsticks = new Semaphore[5];
 
-        //initlize the chopistics
-        for(int i=0; i< chopistics.length; i++){
-            chopistics[i] = new Chopstick("C: "+i);
+        // Inicializar los semáforos (chopsticks)
+        for (int i = 0; i < chopsticks.length; i++) {
+            chopsticks[i] = new Semaphore(1);
         }
-        Philosopher[] philosophers = new Philosopher[5];
-        //for(i=0; i<philosophers.length; i++){
-        philosophers[0] = new Philosopher("P: 0 - ", chopistics[0], chopistics[1], rounds);
-        philosophers[1] = new Philosopher("P: 1 - ", chopistics[1], chopistics[2], rounds);
-        philosophers[2] = new Philosopher("P: 2 - ", chopistics[2], chopistics[3], rounds);
-        philosophers[3] = new Philosopher("P: 3 - ", chopistics[3], chopistics[4], rounds);
-        philosophers[4] = new Philosopher("P: 4 - ", chopistics[0], chopistics[4], rounds);
 
-        for(int i=0;i<philosophers.length;i++){
-            Log.msg("Thread "+ i + " has started");
-            Thread t= new Thread( philosophers[i]);
+        Philosopher[] philosophers = new Philosopher[5];
+        philosophers[0] = new Philosopher("P: 0 - ", chopsticks[0], chopsticks[1], rounds);
+        philosophers[1] = new Philosopher("P: 1 - ", chopsticks[1], chopsticks[2], rounds);
+        philosophers[2] = new Philosopher("P: 2 - ", chopsticks[2], chopsticks[3], rounds);
+        philosophers[3] = new Philosopher("P: 3 - ", chopsticks[3], chopsticks[4], rounds);
+        philosophers[4] = new Philosopher("P: 4 - ", chopsticks[4], chopsticks[0], rounds);
+
+        for (int i = 0; i < philosophers.length; i++) {
+            Log.msg("Thread " + i + " has started");
+            Thread t = new Thread(philosophers[i]);
             t.start();
         }
     }
 }
 
-// State : 2 = Eat, 1 = think
-class Philosopher extends Thread
-{
-    private Chopstick _leftChopistick;
-    private Chopstick _rightChopistick;
+class Philosopher extends Thread {
+    private Semaphore leftChopstick;
+    private Semaphore rightChopstick;
+    private String name;
+    private int rounds;
 
-    private String _name;
-    private int _state;
-    private int _rounds;
-
-    public Philosopher ( String name, Chopstick _left, Chopstick _right, int rounds){
-        this._state = 1;
-        this._name = name;
-        _leftChopistick = _left;
-        _rightChopistick = _right;
-        _rounds = rounds;
+    public Philosopher(String name, Semaphore left, Semaphore right, int rounds) {
+        this.name = name;
+        this.leftChopstick = left;
+        this.rightChopstick = right;
+        this.rounds = rounds;
     }
 
-    public void eat()
-    {
-        if(! _leftChopistick.used){
-            if(!_rightChopistick.used){
-                _leftChopistick.take();
-                _rightChopistick.take();
+    public void eat() {
+        try {
+            leftChopstick.acquire();
+            Log.msg(name + " took left chopstick");
+            rightChopstick.acquire();
+            Log.msg(name + " took right chopstick");
 
-                Log.msg(_name + " : Eat");
+            Log.msg(name + " : Eat");
+            Log.Delay(1000);
 
-                Log.Delay(1000);
-
-                _rightChopistick.release();
-                _leftChopistick.release();
-            }
+            rightChopstick.release();
+            Log.msg(name + " released right chopstick");
+            leftChopstick.release();
+            Log.msg(name + " released left chopstick");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         think();
     }
 
-    public void think(){
-        this._state = 1;
-        Log.msg(_name + " : Think");
+    public void think() {
+        Log.msg(name + " : Think");
         Log.Delay(1000);
-
     }
 
-    public void run(){
-        for(int i=0; i<=_rounds; i++){
+    public void run() {
+        for (int i = 0; i < rounds; i++) {
             eat();
         }
     }
 }
 
-class Log{
-
-    public static void msg(String msg){
+class Log {
+    public static void msg(String msg) {
         System.out.println(msg);
     }
-    public static void Delay(int ms){
-        try{
+
+    public static void Delay(int ms) {
+        try {
             Thread.sleep(ms);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
         }
-        catch(InterruptedException ex){ }
-    }
-}
-
-class Chopstick{
-
-    public boolean used;
-    public String _name;
-
-    public Chopstick(String _name){
-        this._name = _name;
-    }
-
-    public synchronized void take() {
-        Log.msg ("Used :: " + _name );
-        this.used = true;
-    }
-    public synchronized void release() {
-        Log.msg ("Released :: " + _name );
-        this.used = false ;
     }
 }
