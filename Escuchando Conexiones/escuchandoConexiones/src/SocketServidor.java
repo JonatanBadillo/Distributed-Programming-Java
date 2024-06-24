@@ -35,6 +35,11 @@ public class SocketServidor {
 
             // El servidor espera (bloquea) hasta que un cliente intente conectarse. Cuando un cliente se conecta,
             // se acepta la conexión y se crea un Socket para comunicarse con el cliente.
+            // no hace nada hasta que un cliente intenta conectarse al programa
+            // del servidor en el puerto que se ha configurado.
+            // y luego devuelve el nuevo objeto Socket vinculado al puerto
+            // del socket del servidor. Este socket también contiene el puerto remoto y el
+            // nombre de host del cliente que intenta la conexión.
             Socket sock = ssock.accept();
             // manda msj que la conexion con el cliente se ha realizado correctamente
             System.out.println("client has made socket connection");
@@ -54,17 +59,29 @@ public class SocketServidor {
         }
     }
 
-    
+
     public static void communicateWithClient(Socket socket) {
         BufferedReader in = null;
         PrintWriter out = null;
         try {
+            // Se crean los objetos BufferedReader para leer los datos que llegan desde el cliente y
+            // PrintWriter para enviar datos al cliente.
             in = new BufferedReader(
                     new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(
                     socket.getOutputStream(), true);
             String s = null;
+
+            // Una vez que estos objetos se hayan creado correctamente, el servidor puede comunicarse con
+            // el cliente.
+            // Se envía un mensaje al cliente indicando que el servidor ha recibido la comunicación.
             out.println("Server received communication!");
+
+            // Utiliza un ciclo para hacerlo, leyendo del objeto BufferedReader (el flujo de
+            // entrada del cliente)
+
+            // Se lee una línea de datos del cliente y se imprime en la consola del servidor.
+            // El while se rompe después de leer la primera línea.
             while ((s = in.readLine()) != null) {
                 System.out.println("received from client: " + s);
                 out.flush();
@@ -73,6 +90,7 @@ public class SocketServidor {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            // Finalmente, se cierran los recursos de entrada y salida.
             try {
                 in.close();
                 out.close();

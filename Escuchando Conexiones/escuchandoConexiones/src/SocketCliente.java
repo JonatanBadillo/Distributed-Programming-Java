@@ -8,7 +8,10 @@ public class SocketCliente {
     public static Socket socket = null;
     public static PrintWriter out;
     public static BufferedReader in;
+
+
     public static void main(String[] args) {
+        
         createConnection("127.0.0.1", 1234);
     }
 
