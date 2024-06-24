@@ -11,21 +11,25 @@ public class SocketCliente {
 
 
     public static void main(String[] args) {
-        
+        // establece una conexión con el servidor ubicado en 127.0.0.1 (localhost) en el puerto 1234.
         createConnection("127.0.0.1", 1234);
     }
 
     public static void createConnection(String host, int port) {
         try {
-//Create socket connection
+            // Crea la conexión del socket, con el puerto y host establecido
             socket = new Socket(host, port);
-// Obtain a handle on the socket output
+            // Se obtiene un PrintWriter para enviar datos al servidor.
             out = new PrintWriter(socket.getOutputStream(),
                     true);
-// Obtain a handle on the socket input
+            // Se obtiene un BufferedReader para leer datos del servidor.
             in = new BufferedReader(new InputStreamReader(
                     socket.getInputStream()));
+
+            // Se llama al método testConnection para realizar una prueba de comunicación con el servidor.
             testConnection();
+
+            // Finalmente, se cierran los recursos de entrada y salida.
             System.out.println("Closing the connection...");
             out.close();
             in.close();
@@ -39,14 +43,18 @@ public class SocketCliente {
             System.exit(1);
         }
     }
+
+
+
     public static void testConnection() {
         String serverResponse = null;
         if (socket != null && in != null && out != null) {
+            // manda msj que todo bien
             System.out.println("Successfully connected, now testing...");
             try {
-// Send data to server
+                // Se envía una cadena de texto al servidor.
                 out.println("Here is a test.");
-// Receive data from server
+                // Se lee la respuesta del servidor y se imprime en la consola.
                 while((serverResponse = in.readLine()) != null)
                     System.out.println(serverResponse);
             } catch (IOException e) {
