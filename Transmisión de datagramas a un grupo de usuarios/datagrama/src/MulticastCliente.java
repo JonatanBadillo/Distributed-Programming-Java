@@ -13,6 +13,9 @@ public class MulticastCliente {
     }
 
     public static void main(String[] args) {
+        // El código busca una interfaz de red que sea compatible con IPv4 y soporte multicast.
+        //Utiliza un bucle para revisar todas las interfaces de red disponibles y
+        // selecciona la primera que cumpla los criterios.
         try {
             // Obtener la interfaz de red compatible con IPv4 y multicast
             NetworkInterface networkInterface = null;
