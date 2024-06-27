@@ -1,5 +1,6 @@
-import java.rmi.*;
-public interface Adder extends Remote{
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 
-public int add(int x,int y)throws RemoteException;
+public interface Adder extends Remote {
+    int add(int x, int y) throws RemoteException;
 }
